@@ -6,28 +6,30 @@
   font-display: swap;
 }
 
-
-html, body {
+/* HARD LOCK: no scroll on Android */
+html {
   height: 100%;
-  margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   overscroll-behavior: none;
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
+  overflow: hidden;              /* critical */
+  overscroll-behavior: none;     /* critical */
+  min-height: 100dvh;            /* mobile-safe viewport */
   background:
     radial-gradient(circle at 25% 30%, #A9DED9, transparent 45%),
     radial-gradient(circle at 75% 70%, #5FA9A3, transparent 50%),
     linear-gradient(135deg, #7EC9C3, #4A4A4A);
 }
 
-/* Grain overlay (CSS-only) */
+/* Grain overlay (NO negative inset — prevents tiny overflow scroll) */
 body::before {
   content: "";
   position: fixed;
-  inset: 0px;
+  inset: 0;                      /* was -20px */
   pointer-events: none;
   z-index: 0;
 
@@ -40,9 +42,13 @@ body::before {
       transparent 2px
     );
 
-  opacity: 0.25;          /* optional: tune overall strength */
+  opacity: 0.25;
   mix-blend-mode: soft-light;
-  filter: blur(0.3px);    /* optional: reduces dot artifacts */
+  filter: blur(0.3px);
+
+  /* If you still want extra coverage without overflow: */
+  transform: scale(1.05);
+  transform-origin: center;
 }
 
 /* Keep content above grain */
@@ -51,10 +57,7 @@ body > * {
   z-index: 1;
 }
 
-/* Fallback if blend-mode isn't supported */
-@supports not (mix-blend-mode: soft-light) {
-  body::before {
-    mix-blend-mode: normal;
-    opacity: 0.08;
-  }
+/* Optional: prevent any accidental horizontal nudge */
+* {
+  max-width: 100%;
 }
