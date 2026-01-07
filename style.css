@@ -6,25 +6,23 @@
   font-display: swap;
 }
 
+
 html, body {
-  margin: 0;
   height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
-  touch-action: none;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 body {
-  position: fixed;
-  inset: 0;
-
+  min-height: 100vh;
+  margin: 0;
   background:
     radial-gradient(circle at 25% 30%, #A9DED9, transparent 45%),
     radial-gradient(circle at 75% 70%, #5FA9A3, transparent 50%),
     linear-gradient(135deg, #7EC9C3, #4A4A4A);
 }
 
-/* Grain overlay */
+/* Grain overlay (CSS-only) */
 body::before {
   content: "";
   position: fixed;
@@ -41,17 +39,18 @@ body::before {
       transparent 2px
     );
 
-  opacity: 0.25;
+  opacity: 0.25;          /* optional: tune overall strength */
   mix-blend-mode: soft-light;
-  filter: blur(0.3px);
+  filter: blur(0.3px);    /* optional: reduces dot artifacts */
 }
 
-/* Content above grain */
+/* Keep content above grain */
 body > * {
   position: relative;
   z-index: 1;
 }
 
+/* Fallback if blend-mode isn't supported */
 @supports not (mix-blend-mode: soft-light) {
   body::before {
     mix-blend-mode: normal;
