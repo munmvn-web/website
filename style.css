@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Lateef";
+  src: url("Lateef-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 25% 30%, #A9DED9, transparent 45%),
+    radial-gradient(circle at 75% 70%, #5FA9A3, transparent 50%),
+    linear-gradient(135deg, #7EC9C3, #4A4A4A);
+}
+
+/* Grain overlay (CSS-only) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20px;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    repeating-radial-gradient(
+      circle at 0 0,
+      rgba(255,255,255,0.03) 0,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+
+  opacity: 0.25;          /* optional: tune overall strength */
+  mix-blend-mode: soft-light;
+  filter: blur(0.3px);    /* optional: reduces dot artifacts */
+}
+
+/* Keep content above grain */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fallback if blend-mode isn't supported */
+@supports not (mix-blend-mode: soft-light) {
+  body::before {
+    mix-blend-mode: normal;
+    opacity: 0.08;
+  }
+}
