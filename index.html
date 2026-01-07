@@ -1,99 +1,110 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="logo.png" type="image/gif">
-        <link rel="stylesheet" href="style.css">
-        <title>
-            شركة قيراط الاستثمار
-        </title>
-        
-    </head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="logo.png" type="image/gif">
+  <link rel="stylesheet" href="style.css">
+  <title>شركة قيراط الاستثمار</title>
+</head>
+
 
 <body>
-    <div style="
-  position: fixed;
-  top: clamp(40px, 8vh, 72px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
 
-  font-family: Lateef, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: clamp(50px, 4vw, 80px);
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  color: #ffffff;
-">
-  ...قريبًا
-</div>
+  <div class="page">
 
-  <div style="
-    position: fixed;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-  ">
-    <!-- HORIZONTAL GROUP -->
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: clamp(16px, 4vw, 32px);
-      pointer-events: auto;
-    ">
-
-      <!-- SQUARE (unchanged) -->
-      <div style="
-        --size: min(80vw, 320px);
-        --x: -12vw;
-        --y: 0vh;
-
-        width: var(--size);
-        height: var(--size);
-        transform: translate(var(--x), var(--y));
-
-        background: #d6ece7;
-        border-radius: 18px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-family: Lateef, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-size: clamp(30px, 4vw, 40px);
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        color: #1a1a1a;
-
-        box-shadow:
-          0 30px 60px rgba(0, 0, 0, 0.18),
-          0 8px 20px rgba(0, 0, 0, 0.08);
-      ">
-        !تواصل مع فريقنا <br>
-        info@qiratgroup.sa
-      </div>
-
-      <!-- IMAGE ON THE RIGHT -->
-      <img
-        src="logo.png"
-        alt="Company logo"
-        style="
-          width: clamp(200px, 25vw, 300px);
-          height: auto;
-          object-fit: contain;
-        "
-      />
-
+    <!-- TOP TEXT -->
+    <div class="top">
+      ...قريبًا
     </div>
+
+    <!-- CARD -->
+    <div class="center">
+      <div class="card">
+        !تواصل مع فريقنا<br>
+        <span>info@qiratgroup.sa</span>
+      </div>
+    </div>
+
+    <!-- LOGO -->
+    <div class="bottom">
+      <img src="logo.png" alt="Company logo">
+    </div>
+
   </div>
+
+  <style>
+    /* PAGE GRID */
+    .page {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(20px, 4vw, 40px);
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    /* TOP */
+    .top {
+      justify-self: center;
+      font-family: Lateef, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 500;
+      color: #ffffff;
+      margin-top: clamp(12px, 4vh, 48px);
+      pointer-events: none;
+    }
+
+    /* CENTER CARD */
+    .center {
+      display: grid;
+      place-items: center;
+      pointer-events: auto;
+    }
+
+    .card {
+      width: min(88vw, 420px);
+      padding: clamp(22px, 4vw, 40px);
+      background: #d6ece7;
+      border-radius: 26px;
+      text-align: center;
+
+      font-family: Lateef, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500;
+      color: #1a1a1a;
+
+      box-shadow:
+        0 30px 60px rgba(0,0,0,0.18),
+        0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card span {
+      font-weight: 600;
+    }
+
+    /* LOGO */
+    .bottom {
+      display: grid;
+      place-items: center;
+      margin-bottom: clamp(12px, 4vh, 48px);
+      pointer-events: auto;
+    }
+
+    .bottom img {
+      width: clamp(220px, 50vw, 420px);
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
+
+  <!-- disable scroll -->
   <script>
-  document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
-</script>
+    document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+  </script>
 
 </body>
-
-
-
-
 
 
 
